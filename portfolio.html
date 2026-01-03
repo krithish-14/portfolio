@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/portfolio.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Portfolio</title>
+</head>
+<body>
+<div id="header">
+    <div>
+        <h1 style="font-family: 'Times New Roman', Times, serif; color: white ;" class="name"> Krithish.B.R</h1>
+    </div>
+
+
+
+    <div class="nav">
+        <img src="images/down-arrow.png" width="50" height="50" class="menu" alt="Open menu"> 
+        <div class="dp">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skill">Skills</a></li>
+                <li><a href="#Project">Project</a></li>
+                <li><a href="#contact">Contact</a></li>
+     
+            </ul>
+        </div>       
+    </div>
+</div>
+
+<div id="home">
+  <div>
+    <h1 style="color: white;" class="he">Hi,I'm Krithish</h1>
+    <h3 style="color: rgb(218, 86, 86);" class="hi">Web developer</h3>
+    <p style="color: white;">
+        A User Interface and User Experience with a love for creating designs
+        that are accessible and easy to use for everyone..!
+    </p>
+    <button class="button">Hire me</button>
+  </div>
+</div>
+
+
+
+<div id="about">
+    <h1 style="color: white; text-align: center; font-size:xx-large;">About!</h1>
+      
+    <div class="ab">
+        
+        <div class="ab1">
+            <img src="style/images/about.gif" alt="About animation">
+        </div>
+
+        <div class="ab2">
+            
+                <p>
+                Hi! I'm Krithish,Proficient in web development and programming languages including HTML,CSS, Python, and Excel. 
+                Gained practical experience through academic projects and internship.Eager to leverage skills and knowledge to support
+                data-driven decision-making and contribute to organizational success.I stay ahead of emerging trends, 
+                mastering new tools and technologies to elevate my work.Let's create something extraordinary together!
+                </p>
+                <button style="margin-left: -3px;" class="button">Download CV</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div id="skill">
+    <h1 style="color: white; text-align: center; font-size:xx-large;">Skill Set</h1>
+
+    <div class="ab">
+        
+        <div class="ab1">
+            <img src="style/images/skillset.gif" alt="Skills animation">
+        </div>
+
+        <div class="ab2">
+            <div class="skill-item">
+                <img src="style/images/html (1).png" alt="HTML">
+                <span>HTML</span>
+            </div>
+            <div class="skill-item">
+                <img src="style/images/css (2).png" alt="CSS">
+                <span>CSS</span>
+            </div>
+            <div class="skill-item">
+                <img src="style/images/javascrpit.png" alt="JavaScript">
+                <span>JavaScript</span>
+            </div>
+            <div class="skill-item">
+                <img src="style/images/python.png" alt="Python">
+                <span>Python</span>
+            </div>
+            <div class="skill-item">
+                <img src="style/images/mysql.png" alt="MySQL">
+                <span>MySQL</span>
+            </div>
+        </div>
+
+
+    </div>
+  
+    <h1 style="color: white; text-align: center; font-size:xx-large;">Projects</h1>
+  <div id="Project">
+     
+        <div class="p1">
+        <p> Project1</p><br>
+        <button type="button" class="view-btn"> VIEW</button>
+        </div>
+
+        <div class="p2">
+        <p> Project2</p><br>
+        <button type="button" class="view-btn"> VIEW</button>
+        </div>
+
+        <div class="p3">
+        <p> Project3</p><br>
+        <button type="button" class="view-btn"> VIEW</button>
+        </div>
+     
+    </div>  
+
+</div>
+
+<div id="contact">
+    <h1 style="color: white; text-align: center; font-size:xx-large;">Contact</h1>
+    <form class="contact-form" action="#" method="post">
+        <div class="form-field">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="from_name" type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="form-field">
+            <label for="contact-email">Mail ID</label>
+            <input id="contact-email" name="reply_to" type="email" placeholder="Enter your email" required>
+            <input id="contact-from-email" name="from_email" type="hidden">
+        </div>
+        <div class="form-field full">
+            <label for="contact-desc">Description</label>
+            <textarea id="contact-desc" name="message" rows="5" placeholder="Write your message" required></textarea>
+        </div>
+        <button class="button" type="submit">Submit</button>
+        <p class="form-status" aria-live="polite"></p>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="portfolio.js"></script>
+
+</body>
+</html>
+
+
