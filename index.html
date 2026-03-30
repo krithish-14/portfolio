@@ -3,155 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Krithish B.R — Web Developer Portfolio | RDR2 Dead Eye Style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/portfolio.css">
     <link rel="icon" type="image/png" href="images/logo.png">
-    <title>Portfolio</title>
+    <title>Krithish.B.R — Portfolio</title>
 </head>
 <body>
-<div id="header">
-    <div>
-        <h1 style="font-family: 'Times New Roman', Times, serif; color: white ;" class="name"> Krithish.B.R</h1>
+
+<!-- ══════ DEAD EYE OVERLAYS ══════ -->
+<canvas id="particle-canvas"></canvas>
+<div class="grain-overlay"></div>
+<div class="vignette-overlay"></div>
+
+<!-- ══════ HEADER / NAV ══════ -->
+<header id="header">
+    <div class="brand">
+        <span class="brand-icon">⬥</span>
+        <h1 class="name">Krithish.B.R</h1>
     </div>
-
-
-
-    <div class="nav">
-        <img src="images/down-arrow.png" width="50" height="50" class="menu" alt="Open menu"> 
+    <nav class="nav">
+        <img src="images/down-arrow.png" width="40" height="40" class="menu" alt="Open menu">
         <div class="dp">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skill">Skills</a></li>
-                <li><a href="#Project">Project</a></li>
+                <li><a href="#Project">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
-     
             </ul>
-        </div>       
+        </div>
+    </nav>
+</header>
+
+<!-- ══════ HOME ══════ -->
+<section id="home" class="section">
+    <div class="section-inner">
+        <h2 class="hero-title reveal">Hi, I'm <span class="accent">Krithish</span></h2>
+        <h3 class="hero-sub reveal">Web Developer</h3>
+        <p class="hero-desc reveal">
+            A User Interface and User Experience designer with a love for creating
+            designs that are accessible and easy to use for everyone.
+        </p>
+        <button class="btn-western reveal" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
     </div>
-</div>
+</section>
 
-<div id="home">
-  <div>
-    <h1 style="color: white;" class="he">Hi,I'm Krithish</h1>
-    <h3 style="color: rgb(218, 86, 86);" class="hi">Web developer</h3>
-    <p style="color: white;">
-        A User Interface and User Experience with a love for creating designs
-        that are accessible and easy to use for everyone..!
-    </p>
-    <button class="button">Hire me</button>
-  </div>
-</div>
-
-
-
-<div id="about">
-    <h1 style="color: white; text-align: center; font-size:xx-large;">About!</h1>
-      
-    <div class="ab">
-        
-        <div class="ab1">
+<!-- ══════ ABOUT ══════ -->
+<section id="about" class="section">
+    <h2 class="section-title reveal">About</h2>
+    <div class="about-grid">
+        <div class="about-img reveal">
             <img src="style/images/about.gif" alt="About animation">
         </div>
-
-        <div class="ab2">
-            
-                <p>
-                Hi! I'm Krithish,Proficient in web development and programming languages including HTML,CSS, Python, and Excel. 
-                Gained practical experience through academic projects and internship.Eager to leverage skills and knowledge to support
-                data-driven decision-making and contribute to organizational success.I stay ahead of emerging trends, 
-                mastering new tools and technologies to elevate my work.Let's create something extraordinary together!
-                </p>
-                <button style="margin-left: -3px;" class="button">Download CV</button>
+        <div class="about-text reveal">
+            <p>
+                Hi! I'm Krithish — proficient in web development and programming languages
+                including HTML, CSS, Python, and Excel. Gained practical experience through
+                academic projects and internship. Eager to leverage skills and knowledge to
+                support data-driven decision-making and contribute to organizational success.
+            </p>
+            <p>
+                I stay ahead of emerging trends, mastering new tools and technologies to
+                elevate my work. Let's create something extraordinary together!
+            </p>
+            <button class="btn-western">Download CV</button>
         </div>
-
-
     </div>
+</section>
 
-</div>
-
-
-<div id="skill">
-    <h1 style="color: white; text-align: center; font-size:xx-large;">Skill Set</h1>
-
-    <div class="ab">
+<!-- ══════ SKILLS ══════ -->
+<section id="skill" class="section">
+    <h2 class="section-title reveal">Skill Set</h2>
+    <div class="skills-content reveal">
+        <div class="skills-filter-container">
+            <button class="skill-tab active" data-category="web">Web Tech</button>
+            <button class="skill-tab" data-category="framework">Framework</button>
+            <button class="skill-tab" data-category="tools">Tools</button>
+            <button class="skill-tab" data-category="database">Database</button>
+            <button class="skill-tab" data-category="editors">Editors / IDE's</button>
+        </div>
         
-        <div class="ab1">
-            <img src="style/images/skillset.gif" alt="Skills animation">
+        <div class="chart-container">
+            <canvas id="skillsRadarChart"></canvas>
         </div>
-
-        <div class="ab2">
-            <div class="skill-item">
-                <img src="style/images/html (1).png" alt="HTML">
-                <span>HTML</span>
-            </div>
-            <div class="skill-item">
-                <img src="style/images/css (2).png" alt="CSS">
-                <span>CSS</span>
-            </div>
-            <div class="skill-item">
-                <img src="style/images/javascrpit.png" alt="JavaScript">
-                <span>JavaScript</span>
-            </div>
-            <div class="skill-item">
-                <img src="style/images/python.png" alt="Python">
-                <span>Python</span>
-            </div>
-            <div class="skill-item">
-                <img src="style/images/mysql.png" alt="MySQL">
-                <span>MySQL</span>
-            </div>
-        </div>
-
-
     </div>
-  
-    <h1 style="color: white; text-align: center; font-size:xx-large;">Projects</h1>
-  <div id="Project">
-     
-        <div class="p1">
-        <p> Project1</p><br>
-        <button type="button" class="view-btn"> VIEW</button>
+</section>
+
+<!-- ══════ PROJECTS ══════ -->
+<section id="Project" class="section">
+    <h2 class="section-title reveal">Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card reveal">
+            <div class="project-number">01</div>
+            <p class="project-name">Project 1</p>
+            <button class="btn-western btn-sm">View</button>
         </div>
-
-        <div class="p2">
-        <p> Project2</p><br>
-        <button type="button" class="view-btn"> VIEW</button>
+        <div class="project-card reveal">
+            <div class="project-number">02</div>
+            <p class="project-name">Project 2</p>
+            <button class="btn-western btn-sm">View</button>
         </div>
-
-        <div class="p3">
-        <p> Project3</p><br>
-        <button type="button" class="view-btn"> VIEW</button>
+        <div class="project-card reveal">
+            <div class="project-number">03</div>
+            <p class="project-name">Project 3</p>
+            <button class="btn-western btn-sm">View</button>
         </div>
-     
-    </div>  
+    </div>
+</section>
 
-</div>
-
-<div id="contact">
-    <h1 style="color: white; text-align: center; font-size:xx-large;">Contact</h1>
+<!-- ══════ CONTACT ══════ -->
+<section id="contact" class="section">
+    <h2 class="section-title reveal">Contact</h2>
     <form class="contact-form" action="#" method="post">
-        <div class="form-field">
+        <div class="form-field reveal">
             <label for="contact-name">Name</label>
-            <input id="contact-name" name="from_name" type="text" placeholder="Enter your name" required>
+            <input id="contact-name" name="from_name" type="text" placeholder="Your name" required>
         </div>
-        <div class="form-field">
+        <div class="form-field reveal">
             <label for="contact-email">Mail ID</label>
-            <input id="contact-email" name="reply_to" type="email" placeholder="Enter your email" required>
+            <input id="contact-email" name="reply_to" type="email" placeholder="Your email" required>
             <input id="contact-from-email" name="from_email" type="hidden">
         </div>
-        <div class="form-field full">
-            <label for="contact-desc">Description</label>
+        <div class="form-field full reveal">
+            <label for="contact-desc">Message</label>
             <textarea id="contact-desc" name="message" rows="5" placeholder="Write your message" required></textarea>
         </div>
-        <button class="button" type="submit">Submit</button>
+        <button class="btn-western reveal" type="submit">Send</button>
         <p class="form-status" aria-live="polite"></p>
     </form>
-</div>
+</section>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="portfolio.js"></script>
 
 </body>
 </html>
-
-
