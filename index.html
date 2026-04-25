@@ -96,23 +96,58 @@
 <section id="Project" class="section">
     <h2 class="section-title reveal">Projects</h2>
     <div class="projects-grid">
-        <div class="project-card reveal">
+
+        <div class="project-card reveal"
+             data-title="Gateway — Investor CRM"
+             data-desc="A full-stack investor relations platform built with Django and Bootstrap. Features include investor onboarding, registry management, an AI-powered assistant, WhatsApp template broadcasting, patent & GST data verification, and a dark-mode-first responsive UI with global theme toggling."
+             data-stack="Django · Bootstrap · MS SQL · Docker · WhatsApp Cloud API · EmailJS"
+             data-status="Production"
+             data-url="http://localhost:8000">
             <div class="project-number">01</div>
-            <p class="project-name">Project 1</p>
-            <button class="btn-western btn-sm">View</button>
+            <p class="project-name">Gateway — Investor CRM</p>
+            <p class="project-snippet">Investor relations platform with AI assistant &amp; WhatsApp integration.</p>
+            <button class="btn-western btn-sm view-btn">View</button>
         </div>
-        <div class="project-card reveal">
+
+        <div class="project-card reveal"
+             data-title="Marvel Universe Explorer"
+             data-desc="An immersive Marvel-themed web application that lets users explore the entire Marvel cinematic and comics universe. Browse heroes, villains, story arcs, and timelines with dynamic filtering, character detail pages, and a stunning dark-red-and-gold UI inspired by the Avengers aesthetic."
+             data-stack="HTML · CSS · Vanilla JS · Marvel API · Chart.js"
+             data-status="Live"
+             data-url="https://krithish-14.github.io/Marvel/">
             <div class="project-number">02</div>
-            <p class="project-name">Project 2</p>
-            <button class="btn-western btn-sm">View</button>
+            <p class="project-name">Marvel Universe Explorer</p>
+            <p class="project-snippet">Immersive Marvel hero &amp; villain browser with cinematic UI.</p>
+            <button class="btn-western btn-sm view-btn">View</button>
         </div>
-        <div class="project-card reveal">
-            <div class="project-number">03</div>
-            <p class="project-name">Project 3</p>
-            <button class="btn-western btn-sm">View</button>
-        </div>
+
     </div>
 </section>
+
+<!-- ══════ PROJECT MODAL ══════ -->
+<div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+        <button class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
+
+        <div class="modal-header">
+            <div class="modal-badge" id="modal-status">Live</div>
+            <h3 class="modal-title" id="modal-title">Project Title</h3>
+        </div>
+
+        <p class="modal-desc" id="modal-desc">Description goes here.</p>
+
+        <div class="modal-stack-wrap">
+            <span class="modal-stack-label">Tech Stack</span>
+            <div class="modal-stack" id="modal-stack"></div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-western btn-run" id="modal-run-btn">
+                &#9654;&nbsp; Run Application
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- ══════ CONTACT ══════ -->
 <section id="contact" class="section">

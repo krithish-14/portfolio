@@ -447,4 +447,109 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /* ══════════════════════════════════════════════
+     7. PROJECT MODAL
+     Opens a detail card on "View" click, populates
+     it with data-* attributes from the project card,
+     and lets the "Run Application" button open the
+     project URL in a new tab.
+     ══════════════════════════════════════════════ */
+  const modalOverlay  = document.getElementById('project-modal');
+  const modalTitle    = document.getElementById('modal-title');
+  const modalDesc     = document.getElementById('modal-desc');
+  const modalStack    = document.getElementById('modal-stack');
+  const modalStatus   = document.getElementById('modal-status');
+  const modalRunBtn   = document.getElementById('modal-run-btn');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+
+  let currentProjectUrl = '#';
+
+  // Status label → CSS class map
+  const statusClassMap = {
+    'live'          : 'status-live',
+    'production'    : 'status-production',
+    'in development': 'status-development'
+  };
+
+  function openModal(card) {
+    const title  = card.dataset.title  || 'Project';
+    const desc   = card.dataset.desc   || '';
+    const stack  = card.dataset.stack  || '';
+    const status = card.dataset.status || 'Live';
+    const url    = card.dataset.url    || '#';
+
+    // Populate fields
+    modalTitle.textContent = title;
+    modalDesc.textContent  = desc;
+    currentProjectUrl      = url;
+
+    // Badge
+    modalStatus.textContent = status;
+    modalStatus.className   = 'modal-badge'; // reset
+    const key = status.toLowerCase();
+    if (statusClassMap[key]) modalStatus.classList.add(statusClassMap[key]);
+
+    // Tech-stack pills — split on " · "
+    modalStack.innerHTML = '';
+    stack.split(' · ').filter(Boolean).forEach(tech => {
+      const pill = document.createElement('span');
+      pill.className   = 'stack-pill';
+      pill.textContent = tech.trim();
+      modalStack.appendChild(pill);
+    });
+
+    // Show modal
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Focus the close button for accessibility
+    setTimeout(() => modalCloseBtn && modalCloseBtn.focus(), 50);
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Attach to every View button
+  document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.project-card');
+      if (card) openModal(card);
+    });
+  });
+
+  // Close via X button
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  // Close by clicking the backdrop (outside the card)
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Run Application — opens project URL in new tab
+  if (modalRunBtn) {
+    modalRunBtn.addEventListener('click', () => {
+      if (currentProjectUrl && currentProjectUrl !== '#') {
+        window.open(currentProjectUrl, '_blank', 'noopener,noreferrer');
+      } else {
+        // For the portfolio itself, just scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        closeModal();
+      }
+    });
+  }
+
 });
