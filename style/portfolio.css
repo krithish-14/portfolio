@@ -5,7 +5,7 @@
 
 /* ── RESET & ROOTS ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; position: relative; }
 :root {
   --header-h: 72px;
   --gold: #c8a85c;
@@ -20,14 +20,12 @@ html { scroll-behavior: smooth; }
   --text-dim: rgba(201,192,176,0.5);
   --border: rgba(200,168,92,0.15);
 }
-
 body {
   font-family: 'EB Garamond', 'Georgia', serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
   padding-top: var(--header-h);
-  overflow-x: hidden;
   cursor: default;
 }
 a { color: inherit; text-decoration: none; }
@@ -630,7 +628,7 @@ img { display: block; max-width: 100%; height: auto; }
   .dp {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 100%;
     height: 100vh;
     background: rgba(10, 10, 10, 0.98);
@@ -638,10 +636,15 @@ img { display: block; max-width: 100%; height: auto; }
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 9999;
+    visibility: hidden;
   }
-  .dp.active { right: 0; }
+  .dp.active { 
+    transform: translateX(0); 
+    visibility: visible;
+  }
   
   .dp ul {
     flex-direction: column;
@@ -681,7 +684,7 @@ img { display: block; max-width: 100%; height: auto; }
     padding: 100px 20px; 
     min-height: 100svh;
   }
-  .hero-title { font-size: 38px; line-height: 1.2; }
+  .hero-title { font-size: clamp(28px, 9vw, 38px); line-height: 1.2; }
   .hero-desc { font-size: 16px; margin-bottom: 48px; }
   
   .chart-container {
