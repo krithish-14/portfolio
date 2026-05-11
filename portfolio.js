@@ -340,6 +340,62 @@ document.addEventListener('DOMContentLoaded', () => {
       const chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
+        onClick: (event, elements, chart) => {
+          const area = chart.chartArea;
+          const x = event.x;
+          const y = event.y;
+          
+          // Find which label was clicked
+          const scale = chart.scales.r;
+          const labelCount = chart.data.labels.length;
+          for (let i = 0; i < labelCount; i++) {
+            const angle = scale.getIndexAngle(i) - Math.PI / 2;
+            const dist = scale.drawingArea + 10;
+            const labelX = scale.xCenter + Math.cos(angle) * dist;
+            const labelY = scale.yCenter + Math.sin(angle) * dist;
+            
+            // Check if click is near the label
+            if (Math.abs(x - labelX) < 40 && Math.abs(y - labelY) < 20) {
+              const skill = chart.data.labels[i];
+              const skillUrls = {
+                'Django': 'https://www.w3schools.com/django/',
+                'Python': 'https://www.w3schools.com/python/',
+                'HTML': 'https://www.w3schools.com/html/',
+                'CSS': 'https://www.w3schools.com/css/',
+                'JavaScript': 'https://www.w3schools.com/js/',
+                'Bootstrap': 'https://www.w3schools.com/bootstrap/bootstrap_ver.asp',
+                'MS SQL': 'https://www.w3schools.com/sql/',
+                'MY SQL': 'https://www.w3schools.com/mysql/default.asp',
+                'Git': 'https://www.w3schools.com/git/',
+                'Docker': 'https://docs.docker.com/'
+              };
+              if (skill && skillUrls[skill]) {
+                window.open(skillUrls[skill], '_blank');
+              } else if (skill) {
+                window.open(`https://www.google.com/search?q=w3schools+${encodeURIComponent(skill)}`, '_blank');
+              }
+              break;
+            }
+          }
+        },
+        onHover: (event, elements, chart) => {
+          // Change cursor to pointer when hovering over a label area
+          const x = event.x;
+          const y = event.y;
+          const scale = chart.scales.r;
+          let hoveringLabel = false;
+          for (let i = 0; i < chart.data.labels.length; i++) {
+            const angle = scale.getIndexAngle(i) - Math.PI / 2;
+            const dist = scale.drawingArea + 10;
+            const labelX = scale.xCenter + Math.cos(angle) * dist;
+            const labelY = scale.yCenter + Math.sin(angle) * dist;
+            if (Math.abs(x - labelX) < 40 && Math.abs(y - labelY) < 20) {
+              hoveringLabel = true;
+              break;
+            }
+          }
+          event.native.target.style.cursor = hoveringLabel ? 'pointer' : 'default';
+        },
         scales: {
           r: {
             min: 0,
@@ -491,10 +547,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tech-stack pills — split on " · "
     modalStack.innerHTML = '';
+    const skillUrls = {
+      'Django': 'https://www.w3schools.com/django/',
+      'Python': 'https://www.w3schools.com/python/',
+      'HTML': 'https://www.w3schools.com/html/',
+      'CSS': 'https://www.w3schools.com/css/',
+      'JavaScript': 'https://www.w3schools.com/js/',
+      'Bootstrap': 'https://www.w3schools.com/bootstrap/bootstrap_ver.asp',
+      'MS SQL': 'https://www.w3schools.com/sql/',
+      'MY SQL': 'https://www.w3schools.com/mysql/default.asp',
+      'Git': 'https://www.w3schools.com/git/',
+      'Docker': 'https://docs.docker.com/' // W3Schools doesn't have Docker, using official docs
+    };
+
     stack.split(' · ').filter(Boolean).forEach(tech => {
-      const pill = document.createElement('span');
-      pill.className   = 'stack-pill';
-      pill.textContent = tech.trim();
+      const cleanTech = tech.trim();
+      const pill = document.createElement('a');
+      pill.className = 'stack-pill';
+      pill.textContent = cleanTech;
+      pill.target = '_blank';
+      pill.style.textDecoration = 'none';
+      
+      // Use mapped URL or a general search on W3Schools
+      if (skillUrls[cleanTech]) {
+        pill.href = skillUrls[cleanTech];
+      } else {
+        pill.href = `https://www.google.com/search?q=w3schools+${encodeURIComponent(cleanTech)}`;
+      }
+      
       modalStack.appendChild(pill);
     });
 
