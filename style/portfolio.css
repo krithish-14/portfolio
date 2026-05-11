@@ -4,8 +4,18 @@
    ═══════════════════════════════════════════════ */
 
 /* ── RESET & ROOTS ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; position: relative; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+  max-width: 100%; /* Prevents any element from exceeding its parent's width */
+}
+html { 
+  scroll-behavior: smooth; 
+  width: 100%; 
+  overflow-x: hidden; 
+  position: relative;
+}
 :root {
   --header-h: 72px;
   --gold: #c8a85c;
@@ -20,13 +30,17 @@ html { scroll-behavior: smooth; width: 100%; overflow-x: hidden; position: relat
   --text-dim: rgba(201,192,176,0.5);
   --border: rgba(200,168,92,0.15);
 }
+
 body {
   font-family: 'EB Garamond', 'Georgia', serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
   padding-top: var(--header-h);
+  overflow-x: hidden; /* Double reinforcement */
+  width: 100%;
   cursor: default;
+  position: relative;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }

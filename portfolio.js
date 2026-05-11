@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouse = { x: -9999, y: -9999 };
 
   function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
