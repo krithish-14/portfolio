@@ -632,4 +632,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ══════════════════════════════════════════════
+     8. MOBILE MENU TOGGLE
+     ══════════════════════════════════════════════ */
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const mobileNavLinks = document.querySelectorAll('.dp a');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when a link is clicked
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
 });
